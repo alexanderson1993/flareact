@@ -26,13 +26,13 @@ module.exports = function ({ dev, isServer }) {
     plugins: [new MiniCssExtractPlugin()],
     stats: "errors-warnings",
     watchOptions: {
-      ignored: ['**/.git/**', '**/node_modules/**', '**/out/**']
+      ignored: ["**/.git/**", "**/node_modules/**", "**/out/**"],
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx|ts|tsx)$/,
-          exclude: /node_modules\/(?!(flareact)\/).*/,
+          exclude: /node_modules\/(?!(\@alexanderson1993\/flareact)\/).*/,
           use: loaders.babel,
         },
         {
@@ -57,7 +57,7 @@ module.exports = function ({ dev, isServer }) {
       ],
     },
     resolve: {
-      extensions: ['.js', '.json', '.jsx', '.ts', '.tsx']
-    }
+      extensions: [".js", ".json", ".jsx", ".ts", ".tsx"],
+    },
   };
 };

@@ -26,7 +26,7 @@ const buildId = dev ? "dev" : nanoid();
 const pageManifest = glob.sync("./pages/**/*.+(js|jsx|ts|tsx)");
 
 let entry = {
-  main: "flareact/src/client/index.js",
+  main: "@alexanderson1993/flareact/src/client/index.js",
 };
 
 pageManifest.forEach((page) => {
@@ -55,7 +55,7 @@ pageManifest.forEach((page) => {
 if (!entry["pages/_app"]) {
   const pageLoaderOpts = {
     page: "pages/_app",
-    absolutePagePath: "flareact/src/components/_app.js",
+    absolutePagePath: "@alexanderson1993/flareact/src/components/_app.js",
   };
 
   const pageLoader = `flareact-client-pages-loader?${stringify(

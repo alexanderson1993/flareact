@@ -18,7 +18,10 @@ export function resolvePagePath(pagePath, keys) {
       test = test.replace(DYNAMIC_PAGE, () => "([\\w_-]+)");
     }
 
-    test = test.replace("/", "\\/").replace(/^\./, "").replace(/\.(js|jsx|ts|tsx)$/, "");
+    test = test
+      .replace("/", "\\/")
+      .replace(/^\./, "")
+      .replace(/\.(js|jsx|ts|tsx)$/, "");
 
     return {
       page,
@@ -84,7 +87,7 @@ export function getPage(pagePath, context) {
   }
 }
 
-export async function getPageProps(page, query) {
+export async function getPageProps(page, query, request) {
   let pageProps = {};
 
   const params = page.params || {};
@@ -97,7 +100,11 @@ export async function getPageProps(page, query) {
   };
 
   if (fetcher) {
-    const { props, revalidate } = await fetcher({ params, query: queryObject });
+    const { props, revalidate } = await fetcher({
+      params,
+      query: queryObject,
+      request,
+    });
 
     pageProps = {
       ...props,

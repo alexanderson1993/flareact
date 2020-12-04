@@ -46,7 +46,7 @@ if (argv._.includes("dev")) {
       },
       {
         command:
-          "webpack-dev-server --config node_modules/flareact/configs/webpack.client.config.js --mode development",
+          "webpack-dev-server --config node_modules/@alexanderson1993/flareact/configs/webpack.client.config.js --mode development",
         name: "client",
         env: { NODE_ENV: "development" },
       },
@@ -78,7 +78,7 @@ if (argv._.includes("publish")) {
   concurrently(
     [
       {
-        command: `webpack --config node_modules/flareact/configs/webpack.client.config.js --out ./out --mode production && ${wranglerPublish}`,
+        command: `webpack --config node_modules/@alexanderson1993/flareact/configs/webpack.client.config.js --out ./out --mode production && ${wranglerPublish}`,
         name: "publish",
         env: { NODE_ENV: "production", IS_WORKER: true },
       },
@@ -103,7 +103,7 @@ if (argv._.includes("build")) {
     [
       {
         command:
-          "webpack --config node_modules/flareact/configs/webpack.client.config.js --out ./out --mode production",
+          "webpack --config node_modules/@alexanderson1993/flareact/configs/webpack.client.config.js --out ./out --mode production",
         name: "publish",
         env: { NODE_ENV: "production" },
       },
