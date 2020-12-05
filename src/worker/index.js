@@ -32,8 +32,9 @@ export async function handleRequest(event, context, fallback) {
               pageProps: props,
             }),
             {
-              status: 200,
+              status: props.status || 200,
               headers: {
+                ...props.headers,
                 "content-type": "application/json",
               },
             }
@@ -68,7 +69,7 @@ export async function handleRequest(event, context, fallback) {
       context,
       normalizedPathname,
       query,
-      async (page, props) => {
+      async (page, { headers, status = 200, ...props }) => {
         const html = await render({
           page,
           props,
@@ -78,8 +79,8 @@ export async function handleRequest(event, context, fallback) {
         });
 
         return new Response(html, {
-          status: 200,
-          headers: { "content-type": "text/html" },
+          status,
+          headers: { ...headers, "content-type": "text/html" },
         });
       }
     );
